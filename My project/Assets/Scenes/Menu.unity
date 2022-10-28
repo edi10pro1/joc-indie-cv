@@ -640,6 +640,7 @@ MonoBehaviour:
   cube: {fileID: 668416195}
   rotatiY: 0
   rotatiX: 0
+  rotatiZ: 0
 --- !u!1 &134943022
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public GameObject cube;
     public int rotatiY = 0;
     public int rotatiX = 0;
+    public int rotatiZ = 0;
 
     public void SceneChange(int index)
     {
@@ -25,13 +26,21 @@ public class UIManager : MonoBehaviour
     public void RotateCubeY(int rotationY)
     {
         rotatiY += rotationY;
-        cube.transform.rotation = Quaternion.Euler(rotatiX, rotatiY, 0);
+        cube.transform.rotation = Quaternion.Euler(rotatiX, rotatiY, rotatiZ);
     }
 
     public void RotateCubeX(int rotationX)
     {
-        rotatiX += rotationX;
-        cube.transform.rotation = Quaternion.Euler(rotatiX, rotatiY, 0);
+        if (cube.transform.rotation.y == 90 || cube.transform.rotation.y == -90)
+        {
+            rotatiZ += rotationX;
+        }
+        else
+        {
+            rotatiX += rotationX;
+        }
+            
+        cube.transform.rotation = Quaternion.Euler(rotatiX, rotatiX,rotatiX);
     }
 
     public void CloseAllTabs()
