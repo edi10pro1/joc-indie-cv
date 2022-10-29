@@ -14,35 +14,26 @@ public class UIManager : MonoBehaviour
 
     [Header("Settings UI")]
     public GameObject cube;
-    public int rotatiY = 0;
-    public int rotatiX = 0;
-    public int rotatiZ = 0;
+    public float rotationSpeed = 10f;
 
     public void SceneChange(int index)
     {
         SceneManager.LoadScene(index);
     }
 
-    public void RotateCubeY(int rotationY)
-    {
-        rotatiY += rotationY;
-        cube.transform.rotation = Quaternion.Euler(rotatiX, rotatiY, rotatiZ);
-    }
+    #region Cube Buttons
 
-    public void RotateCubeX(int rotationX)
+    public void OnMouseDrag()
     {
-        if (cube.transform.rotation.y == 90 || cube.transform.rotation.y == -90)
-        {
-            rotatiZ += rotationX;
-        }
-        else
-        {
-            rotatiX += rotationX;
-        }
-            
-        cube.transform.rotation = Quaternion.Euler(rotatiX, rotatiX,rotatiX);
-    }
+        float XaxisRotation = Input.GetAxis("Mouse X") + rotationSpeed;
+        float YaxisRotation = Input.GetAxis("Mouse Y") + rotationSpeed;
 
+        cube.transform.Rotate(Vector3.down, XaxisRotation);
+        cube.transform.Rotate(Vector3.right, YaxisRotation);
+    }
+    #endregion
+
+    #region Tabs
     public void CloseAllTabs()
     {
         menuTab.SetActive(false);
@@ -55,6 +46,12 @@ public class UIManager : MonoBehaviour
     {
         CloseAllTabs();
         menuTab.SetActive(true);
+    }
+
+    public void PlayTab()
+    {
+        CloseAllTabs();
+        playTab.SetActive(true);
     }
 
     public void OptionsTab()
@@ -73,4 +70,5 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
     }
+    #endregion
 }
