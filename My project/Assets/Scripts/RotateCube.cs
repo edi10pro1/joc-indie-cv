@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RotateCube : MonoBehaviour
 {
+    [Header("Settings")]
     public float rotationSpeed = 1f;
 
     public void OnMouseDrag()

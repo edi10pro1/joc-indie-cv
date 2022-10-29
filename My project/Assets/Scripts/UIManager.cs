@@ -12,34 +12,59 @@ public class UIManager : MonoBehaviour
     public GameObject creditsTab;
     public GameObject playTab;
 
-    [Header("Settings UI")]
+    [Header("Settings Scene")]
+    public int index;
+    public TextMeshProUGUI levelText;
+    public GameObject informationLevel;
     public GameObject cube;
-    public float rotationSpeed = 10f;
 
-    public void SceneChange(int index)
+    [Header("Tabs Options")]
+    public GameObject graphicsTab;
+    public GameObject audioTab;
+    public GameObject keybindsTab;
+
+    public void LevelChose(int level)
+    {
+        levelText.text = level.ToString();
+        index = int.Parse(levelText.text);
+        informationLevel.SetActive(true);
+    }
+
+    public void SceneChange()
     {
         SceneManager.LoadScene(index);
     }
 
-    #region Cube Buttons
-
-    public void OnMouseDrag()
-    {
-        float XaxisRotation = Input.GetAxis("Mouse X") + rotationSpeed;
-        float YaxisRotation = Input.GetAxis("Mouse Y") + rotationSpeed;
-
-        cube.transform.Rotate(Vector3.down, XaxisRotation);
-        cube.transform.Rotate(Vector3.right, YaxisRotation);
-    }
-    #endregion
-
     #region Tabs
     public void CloseAllTabs()
     {
+        cube.transform.rotation = Quaternion.Euler(0,0,0);
         menuTab.SetActive(false);
         optionsTab.SetActive(false);
         creditsTab.SetActive(false);
         playTab.SetActive(false);
+        informationLevel.SetActive(false);
+    }
+
+    public void GraphicsTab()
+    {
+        graphicsTab.SetActive(true);
+        audioTab.SetActive(false);
+        keybindsTab.SetActive(false);
+    }
+
+    public void AudioTab()
+    {
+        graphicsTab.SetActive(false);
+        audioTab.SetActive(true);
+        keybindsTab.SetActive(false);
+    }
+
+    public void KeybindTab()
+    {
+        graphicsTab.SetActive(false);
+        audioTab.SetActive(false);
+        keybindsTab.SetActive(true);
     }
 
     public void MenuTab()
