@@ -12,49 +12,71 @@ public class UIManager : MonoBehaviour
     public GameObject creditsTab;
     public GameObject playTab;
 
-    [Header("Settings UI")]
+    [Header("Settings Scene")]
+    public int index;
+    public TextMeshProUGUI levelText;
+    public GameObject informationLevel;
     public GameObject cube;
-    public int rotatiY = 0;
-    public int rotatiX = 0;
-    public int rotatiZ = 0;
 
-    public void SceneChange(int index)
+    [Header("Tabs Options")]
+    public GameObject graphicsTab;
+    public GameObject audioTab;
+    public GameObject keybindsTab;
+
+    public void LevelChose(int level)
+    {
+        levelText.text = level.ToString();
+        index = int.Parse(levelText.text);
+        informationLevel.SetActive(true);
+    }
+
+    public void SceneChange()
     {
         SceneManager.LoadScene(index);
     }
 
-    public void RotateCubeY(int rotationY)
-    {
-        rotatiY += rotationY;
-        cube.transform.rotation = Quaternion.Euler(rotatiX, rotatiY, rotatiZ);
-    }
-
-    public void RotateCubeX(int rotationX)
-    {
-        if (cube.transform.rotation.y == 90 || cube.transform.rotation.y == -90)
-        {
-            rotatiZ += rotationX;
-        }
-        else
-        {
-            rotatiX += rotationX;
-        }
-            
-        cube.transform.rotation = Quaternion.Euler(rotatiX, rotatiX,rotatiX);
-    }
-
+    #region Tabs
     public void CloseAllTabs()
     {
+        cube.transform.rotation = Quaternion.Euler(0,0,0);
         menuTab.SetActive(false);
         optionsTab.SetActive(false);
         creditsTab.SetActive(false);
         playTab.SetActive(false);
+        informationLevel.SetActive(false);
+    }
+
+    public void GraphicsTab()
+    {
+        graphicsTab.SetActive(true);
+        audioTab.SetActive(false);
+        keybindsTab.SetActive(false);
+    }
+
+    public void AudioTab()
+    {
+        graphicsTab.SetActive(false);
+        audioTab.SetActive(true);
+        keybindsTab.SetActive(false);
+    }
+
+    public void KeybindTab()
+    {
+        graphicsTab.SetActive(false);
+        audioTab.SetActive(false);
+        keybindsTab.SetActive(true);
     }
 
     public void MenuTab()
     {
         CloseAllTabs();
         menuTab.SetActive(true);
+    }
+
+    public void PlayTab()
+    {
+        CloseAllTabs();
+        playTab.SetActive(true);
     }
 
     public void OptionsTab()
@@ -73,4 +95,5 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
     }
+    #endregion
 }
