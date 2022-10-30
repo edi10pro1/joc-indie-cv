@@ -736,6 +736,10 @@ MonoBehaviour:
   fullscreenToggle: {fileID: 560616917}
   vsyncToggle: {fileID: 197478823}
   qualityDropdown: {fileID: 1445611942}
+  mixer: {fileID: 24100000, guid: 3bd3da5ed88e3684c8b8cf839cbee7f8, type: 2}
+  masterSlider: {fileID: 1120420926}
+  musicSlider: {fileID: 1021826939}
+  sfxSlider: {fileID: 26123399}
 --- !u!1 &134943022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1172,51 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!1 &204850184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204850185}
+  - component: {fileID: 204850186}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &204850185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204850184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 965.6916, y: 506.95837, z: -734.1529}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &204850186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204850184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4ff3616e405dc4fb8ca3d9106eec8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 3bd3da5ed88e3684c8b8cf839cbee7f8, type: 2}
 --- !u!1 &227198598
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,6 +3729,18 @@ MonoBehaviour:
       - m_Target: {fileID: 129937229}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: MenuTab
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 129937230}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: ResetWithoutApplying
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6385,7 +6446,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 129937230}
         m_TargetAssemblyTypeName: Settings, Assembly-CSharp
-        m_MethodName: ApplyButton
+        m_MethodName: ApplyGraphics
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8343,19 +8404,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 129937230}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
-        m_MethodName: SetQuality
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1445611943
 MonoBehaviour:
