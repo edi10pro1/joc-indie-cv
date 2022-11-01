@@ -97,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isMoving", false);
         }
+        crouch();
     }
 
     private void OnApplicationFocus(bool focus)
@@ -109,5 +110,22 @@ public class PlayerMovement : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
         }
+    }
+    private void crouch()
+    {
+        bool crouch=false;
+        if(Input.GetKey(KeyCode.LeftControl)&&!crouch)
+        {
+            
+            crouch=true;
+
+        }
+        else if(Input.GetKey(KeyCode.LeftControl)&&crouch)
+        {
+            
+            crouch=false;
+        }
+         animator.SetBool("crouch", crouch);
+        Debug.Log(crouch);
     }
 }
