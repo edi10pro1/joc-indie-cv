@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject optionsTab;
     public GameObject creditsTab;
     public GameObject playTab;
+    public GameObject customizeTab;
 
     [Header("Settings Scene")]
     public int index;
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
         creditsTab.SetActive(false);
         playTab.SetActive(false);
         informationLevel.SetActive(false);
+        customizeTab.SetActive(true);
     }
 
     public void GraphicsTab()
@@ -89,6 +91,12 @@ public class UIManager : MonoBehaviour
     {
         CloseAllTabs();
         creditsTab.SetActive(true);
+    }
+
+    public void CustomizeTab()
+    {
+        CloseAllTabs();
+        customizeTab.SetActive(true);
     }
 
     public void Quit()
