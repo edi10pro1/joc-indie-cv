@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
         creditsTab.SetActive(false);
         playTab.SetActive(false);
         informationLevel.SetActive(false);
-        customizeTab.SetActive(true);
+        customizeTab.SetActive(false);
     }
 
     public void GraphicsTab()
